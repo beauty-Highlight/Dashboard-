@@ -20,21 +20,21 @@ function Review() {
     const columns = [
         { Header: "id", accessor: "id", align: "left" },
         { Header: "content", accessor: "content", align: "left" },
-        { Header: "userId", accessor: "userId", align: "center" },
-        { Header: "bookId", accessor: "bookId", align: "center" },
+        { Header: "customerId", accessor: "customerId", align: "center" },
+        { Header: "stars", accessor: "stars", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
     ];
     const [rows, setRows] = useState([]);
     const [tableRows, setTableRows] = useState([])
     const{token}= useContext(AuthContext)
     const deleteReview = async (id) => {
-        if (window.confirm('Are you sure you want to delete this review?')) {
-            const deleted = await fetch(`${process.env.REACT_APP_API_URL}/reviews/` + id, {
-                method: 'PUT',
+        if (window.confirm('Are you sure you want to delete this service?')) {
+            const deleted = await fetch(`http://localhost:3000/reviews/` + id , {
+                method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${token}`,
-                },
+                }
             })
             const result = await deleted.json()
             const remainedRows = rows.filter((review) => {
@@ -45,13 +45,14 @@ function Review() {
         }
 
     }
+
     useEffect(() => {
         const jsxRows = rows?.map((review) => {
             return {
                 id: <>{review.id}</>,
                 content: <>{review.content}</>,
-                userId: <>{review.userId}</>,
-                bookId: <>{review.bookId}</>,
+                customerId: <>{review.customerId}</>,
+                stars: <>{review.stars}</>,
                 options: <>
                     <MDButton variant="text" color="error" onClick={() => { deleteReview(review.id) }}>
                         <Icon>delete</Icon>&nbsp;delete
@@ -68,7 +69,7 @@ function Review() {
     }, [rows])
     useEffect(() => {
         async function getReviews() {
-            const data = await fetch(`${process.env.REACT_APP_API_URL}/reviews/all`);
+            const data = await fetch(`http://localhost:3000/reviews/`);
             const reviews = await data.json()
             setRows(reviews.data)
         }

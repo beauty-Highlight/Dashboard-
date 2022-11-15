@@ -95,17 +95,6 @@ function Service() {
         getServices();
     }, []);
     console.log(rows)
-    // const token = sessionStorage.getItem('token'); //Add this line
-
-    // return fetch(process.env.REACT_APP_API_URL}+'/admins/all', {
-    //     method: 'POST',
-    //     headers: {
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json',
-    //         Authorization: `Bearer ${token}` //Add this line
-    //     },
-    //     body: JSON.stringify(token),
-    // })
     return (
         <DashboardLayout>
             <DashboardNavbar />

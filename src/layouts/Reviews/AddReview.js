@@ -15,16 +15,17 @@ import Icon from "@mui/material/Icon";
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "context/Auth";
+import Review from ".";
 
-function AddReview() {
+function AddReviews() {
     const handleOnChange = (e) => {
-        review[e.target.name] = review[e.target.value]
+        Review[e.target.name] = Review[e.target.value]
     }
     const { token } = useContext(AuthContext);
     const [review, setReview]= useState({
-        userId : "",
-        bookId : "",
-        content: ""     
+        content : "",
+        customerId : "",
+        stars: ""     
     })
     const navigate = useNavigate()
     const AddReview = async (event) => {
@@ -54,9 +55,9 @@ function AddReview() {
                             <MDBox p={3}>
                                 <MDTypography variant='h5'>Add New Review</MDTypography>
                                 <MDBox pt={4} pb={2}>
-                                    <MDBox mb={3}><TextField name="userId" fullWidth label="userId" value={review.userId} onChange={(e) => setReview({...review, userId: e.target.value})}/></MDBox>
-                                    <MDBox mb={3}><TextField name="bookId" fullWidth label="bookId" value={review.bookId} onChange={(e) => setReview({...review, bookId: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="content" fullWidth label="content" value={review.content} onChange={(e) => setReview({...review, content: e.target.value})} /></MDBox>
+                                    <MDBox mb={3}><TextField name="customerId" fullWidth label="customerId" value={review.customerId} onChange={(e) => setReview({...review, customerId: e.target.value})}/></MDBox>
+                                    <MDBox mb={3}><TextField name="stars" fullWidth label="stars" value={review.stars} onChange={(e) => setReview({...review, stars: e.target.value})} /></MDBox>
                                     <MDBox>
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
@@ -74,4 +75,7 @@ function AddReview() {
     )
 }
 
-export default AddReview
+export default AddReviews
+
+
+

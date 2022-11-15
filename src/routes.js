@@ -297,17 +297,8 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Comments",
-    key: "Comments",
-    icon: <BiCommentDetail />,
-    route: "/comment",
-    component: <Comment />,
-    sidenav: true,
-  },
-  {
-    type: "collapse",
     name: "Add Reviews",
-    key: "Add Reviews",
+    key: "add-Review",
     icon: <Icon fontSize="small">forest</Icon>,
     route: "/reviews/add",
     component: <AddReview />,
@@ -358,6 +349,16 @@ const routes = [
   //   component: <Notifications />,
   //   sidenav: true,
   // },
+  {
+    type: "collapse",
+    name: "Comments",
+    key: "Comments",
+    icon: <BiCommentDetail />,
+    route: "/comment",
+    component: <Comment />,
+    sidenav: true,
+  },
+
   {
     type: "collapse",
     name: "Profile",

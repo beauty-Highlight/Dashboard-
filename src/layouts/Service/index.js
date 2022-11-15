@@ -34,7 +34,7 @@ function Service() {
     const [tableRows, setTableRows] = useState([])
     const deleteService = async (id) => {
         if (window.confirm('Are you sure you want to delete this service?')) {
-            const deleted = await fetch(`http://localhost:3000/services/:id`, {
+            const deleted = await fetch(`http://localhost:3000/services/` + id , {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function Service() {
                     <MDButton variant="text" color="error" onClick={() => { deleteService(service.id) }}>
                         <Icon>delete</Icon>&nbsp;delete
                     </MDButton>
-                    <Link to={`/servicses/${service.id}`}>
+                    <Link to={`/services/${service.id}`}>
                         <MDButton variant="text" color="dark">
                             <Icon>edit</Icon>&nbsp;edit
                         </MDButton>

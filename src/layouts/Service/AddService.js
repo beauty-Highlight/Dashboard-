@@ -9,7 +9,6 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { TextField } from "@mui/material";
 
-
 import Button from "@mui/material/Button";
 import Icon from "@mui/material/Icon";
 import { useRef, useState,useContext } from "react";
@@ -17,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
 import Service from ".";
 
-function AddService() {
+function AddServices() {
     const{token}= useContext(AuthContext)
     const handleOnChange = (e) => {
         Service[e.target.name] = Service[e.target.value]
@@ -35,7 +34,7 @@ function AddService() {
     const addService = async (event) => {
         event.preventDefault()
         console.log(service)        
-        const added = await fetch(`http://localhost:3000/services/`, {
+        const added = await fetch(`http://localhost:3000/services`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, 
@@ -83,4 +82,4 @@ function AddService() {
     )
 }
 
-export default AddService
+export default AddServices

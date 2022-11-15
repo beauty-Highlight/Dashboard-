@@ -16,7 +16,7 @@ import { useParams } from "react-router-dom";
 
 import { AuthContext } from "context/Auth";
 
-function EditService() {
+function EditServices() {
     
     const { token } = useContext(AuthContext);
     console.log("token",token)
@@ -34,7 +34,7 @@ function EditService() {
     const editService= async (event) => {
         event.preventDefault()
         // let CategoryData = new FormData(event.target)
-        const edit = await fetch(`http://localhost:3000/services/:id`, {
+        const edit = await fetch(`http://localhost:3000/services/ ` +id , {
             method: 'PUT',
             body: JSON.stringify(service),
             headers: {
@@ -98,4 +98,4 @@ function EditService() {
     )
 }
 
-export default EditService
+export default EditServices

@@ -137,15 +137,7 @@ const routes = [
     component: <AddCustomers />,
     sidenav: false,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Add Customers",
-  //   key: "add-Customer",
-  //   icon: <Icon fontSize="small">forest</Icon>,
-  //   route: "/customers/add",
-  //   component: <AddCustomers />,
-  //   sidenav: false,
-  // },
+
   {
     type: "collapse",
     name: "edit-customer",
@@ -155,14 +147,7 @@ const routes = [
     component: <EditCustomers />,
     sidenav: false,
   },
-  // {
-  //   type: "collapse",
-  //   key: "add-customer",
-  //   icon: <Icon fontSize="small">forest</Icon>,
-  //   route: "/customers/:id",
-  //   component: <EditCustomers />,
-  //   sidenav: false,
-  // },
+
   {
     type: "collapse",
     name: "Gallery",
@@ -192,21 +177,21 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Service",
+    name: "Services",
     key: "service",
     icon: <RiAdminLine />,
     route: "/services",
     component: <Service />,
     sidenav: true,
   },
-  {
+    {
     type: "collapse",
-    name: "Services",
-    key: "Services",
-    icon: <RiAdminLine />,
-    route: "/services/:id",
-    component: <EditService />,
-    sidenav: true,
+    name: "Add Services",
+    key: "add-Service",
+    icon: <Icon fontSize="small">forest</Icon>,
+    route: "/services/add",
+    component: <AddService />,
+    sidenav: false,
   },
   {
     type: "collapse",
@@ -217,6 +202,16 @@ const routes = [
     component: <AddService />,
     sidenav: false,
   },
+  {
+    type: "collapse",
+    name: "EditServices",
+    key: "EditServices",
+    icon: <RiAdminLine />,
+    route: "/services/:id",
+    component: <EditService />,
+    sidenav: false,
+  },
+
   {
     type: "collapse",
     name: "Author",

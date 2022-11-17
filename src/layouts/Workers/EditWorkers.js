@@ -1,151 +1,98 @@
-// import DashboardLayout from "examples/LayoutContainers/DashboardLayout"
-// import DashboardNavbar from "examples/Navbars/DashboardNavbar"
+import DashboardLayout from "examples/LayoutContainers/DashboardLayout"
+import DashboardNavbar from "examples/Navbars/DashboardNavbar"
 
-// // @mui material components
-// // import dayjs from "dayjs";
-// import Grid from "@mui/material/Grid";
-// import Card from "@mui/material/Card";
-// import MDBox from "components/MDBox";
-// import MDTypography from "components/MDTypography";
-// import { TextField } from "@mui/material";
-// // import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-// // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// @mui material components
+// import dayjs from "dayjs";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import MDBox from "components/MDBox";
+import MDTypography from "components/MDTypography";
+import { TextField } from "@mui/material";
 
-// import Button from "@mui/material/Button";
-// // import Icon from "@mui/material/Icon";
-// import { useContext, useEffect, useRef, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useParams } from "react-router-dom";
-// import { AuthContext } from "context/Auth";
-// // import { token } from "stylis";
-// // import Avatar from '@mui/material/Avatar';
-
-// // import IconButton from '@mui/material/IconButton';
-// // import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "@mui/material/Button";
+// import Icon from "@mui/material/Icon";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "context/Auth";
 
 
-// function EditWorker() {
-//     const { token } = useContext(AuthContext);
-//     const [admin, setWorker] = useState({
-//         name: '',
-//         email: '',
-//         currentPassword: '',
-//         newPassword: '',
-//         newPasswordConfirmation: '',
+function EditWorkers() {
+    const { token } = useContext(AuthContext);
+    const [worker, setWorker] = useState({
+        name: '',
+        email: '',
+        newPassword: '',
+        newPasswordConfirmation: '',
+        image:'',
 
-//     })
-//     const { id } = useParams()
-//     const navigate = useNavigate()
-//     const editWorker = async (event) => {
-//         event.preventDefault()
-//         // let adminData = new FormData(event.target)
-//         const added = await fetch(`http://localhost:3000/admins/` +id , {
-//             method: 'PUT',
-//             body: JSON.stringify(worker),
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 'Authorization': `Bearer ${token}`,
-//             },
-//         })
-//         const json = await added.json()
-//         alert(json.messages.join(' '))
-//         if (json.success) {
-//             navigate('/workers')
-//         }
-//     }
-//     useEffect(() => {
-//         async function getAdmin() {
-//             const AdminData = await fetch(`${process.env.REACT_APP_API_URL}/admins/all`)
-//             const json = await AdminData.json()
-//             setAdmin(json.data)
-//         }
-//         getAdmin();
-//     }, [])
-//     return (
-//         <DashboardLayout>
-//             <DashboardNavbar />
-//             <Grid container spacing={6}>
-//                 <Grid item xs={12}>
-//                     <Card>
-//                         <form method="put" onSubmit={editAdmin}>
-//                             <MDBox p={3}>
-//                                 <MDTypography variant='h5'>Edit Admin</MDTypography>
-//                                 <MDBox pt={4} pb={2}>
-//                                     <MDBox mb={3}>
-//                                         <TextField value={admin?.name} onChange={(e) => { setAdmin({ ...admin,name: e.target.value }) }} name="name" fullWidth label="Admin Name" /></MDBox>
-//                                     <MDBox mb={3}>
-//                                         <TextField value={admin?.email} onChange={(e) => { setAdmin({ ...admin, email: e.target.value }) }} name="email" fullWidth label="Admin Email" /></MDBox>
+    })
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const editWorker = async (event) => {
+        event.preventDefault()
+        // let adminData = new FormData(event.target)
+        const added = await fetch(`http://localhost:3000/workers/` +id , {
+            method: 'PUT',
+            body: JSON.stringify(worker),
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+        const json = await added.json()
+        alert(json.messages.join(' '))
+        if (json.success) {
+            navigate('/workers')
+        }
+    }
+    useEffect(() => {
+        async function getWorker() {
+            const WorkerData = await fetch(`http://localhost:3000/workers/`)
+            const json = await WorkerData.json()
+            setWorker(json.data)
+        }
+        getWorker();
+    }, [])
+    return (
+        <DashboardLayout>
+            <DashboardNavbar />
+            <Grid container spacing={6}>
+                <Grid item xs={12}>
+                    <Card>
+                        <form method="put" onSubmit={editWorker}>
+                            <MDBox p={3}>
+                                <MDTypography variant='h5'>Edit Worker</MDTypography>
+                                <MDBox pt={4} pb={2}>
+                                    <MDBox mb={3}>
+                                        <TextField value={worker?.name} onChange={(e) => { setWorker({ ...worker,name: e.target.value }) }} name="name" fullWidth label="worker Name" /></MDBox>
+                                  
+                                    <MDBox mb={3}>
+                                        <TextField value={worker?.email} onChange={(e) => { setWorker({ ...worker, email: e.target.value }) }} name="email" fullWidth label="worker Email" /></MDBox>
 
-//                                     <MDBox mb={3}>
-//                                         <TextField value={admin?.currentPassword} onChange={(e) => { setAdmin({ ...admin, currentPassword: e.target.value }) }} name="currentPassword" fullWidth label="Admin currentPassword" /></MDBox>
+                                        <MDBox mb={3}>
+                                        <TextField value={worker?.newPassword} onChange={(e) => { setWorker({ ...worker, newPassword: e.target.value }) }} name="newPassword" fullWidth label="worker newPassword" /></MDBox>
 
-//                                         <MDBox mb={3}>
-//                                         <TextField value={admin?.newPassword} onChange={(e) => { setAdmin({ ...admin, newPassword: e.target.value }) }} name="newPassword" fullWidth label="Admin newPassword" /></MDBox>
+                                    <MDBox mb={3}>
+                                        <TextField value={worker?.newPasswordConfirmation} onChange={(e) => { setWorker({ ...worker, newPasswordConfirmation: e.target.value }) }} name="newPasswordConfirmation" fullWidth label="worker newPasswordConfirmation" /></MDBox>
+                                       
+                                   <MDBox mb={3}>
+                                        <TextField value={worker?.image} onChange={(e) => { setWorker({ ...worker, image: e.target.value }) }} name="image" fullWidth label="worker Image" /></MDBox>
+                                    <MDBox>
+                                        <Button variant="contained" type="submit">
+                                            <MDTypography color='white' variant="p">
+                                                Edit Worker
+                                            </MDTypography>
+                                        </Button>
+                                    </MDBox>
+                                </MDBox>
+                            </MDBox>
+                        </form>
+                    </Card>
+                </Grid>
+            </Grid>
+        </DashboardLayout>
+    )
+}
 
-//                                     <MDBox mb={3}>
-//                                         <TextField value={admin?.newPasswordConfirmation} onChange={(e) => { setAdmin({ ...admin, newPasswordConfirmation: e.target.value }) }} name="newPasswordConfirmation" fullWidth label="Admin newPasswordConfirmation" /></MDBox>
-                                    
-
-//                                     {/* <MDBox mb={3}>
-//                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-//                                             <DateTimePicker
-//                                                 value={trip.date}
-//                                                 renderInput={(props) => <TextField name="date" fullWidth {...props} />}
-//                                                 label="Trip Date"
-//                                                 inputFormat="YYYY-MM-DD HH:mm:ss"
-//                                                 mask="____-__-__ __:__:__"
-//                                                 onChange={(newValue) => {
-//                                                     setTrip({ ...trip, date: dayjs(newValue).format("YYYY-MM-DD HH:mm:ss") })
-//                                                 }}
-//                                             />
-//                                         </LocalizationProvider>
-//                                     </MDBox> */}
-//                                     {/* <MDBox mb={3}>
-//                                         <Grid container spacing={2}>
-//                                             {
-//                                                 trip.Photos.map((photo, i) => {
-//                                                     return (
-//                                                         <Grid item key={i}>
-//                                                             <Avatar
-//                                                                 alt=""
-//                                                                 variant="square"
-//                                                                 src={photo.file}
-//                                                                 sx={{ width: 150, height: 150 }}
-//                                                             />
-//                                                             <IconButton aria-label="delete" onClick={() => {deletePhoto(photo.id)}}>
-//                                                                 <DeleteIcon />
-//                                                             </IconButton>
-//                                                         </Grid>
-//                                                     )
-//                                                 })
-//                                             }
-//                                         </Grid>
-//                                         <Button variant="contained" component="label" color='primary'>
-//                                             <MDTypography color='white' variant="p">
-//                                                 <Grid container spacing={1}>
-//                                                     <Grid item><Icon>photo_library</Icon></Grid>
-//                                                     <Grid item>Upload Photos</Grid>
-//                                                 </Grid>
-//                                             </MDTypography>
-//                                             <input hidden name="photo" accept="image/*" multiple type="file" />
-//                                         </Button>
-//                                     </MDBox> */}
-//                                     <MDBox>
-//                                         <Button variant="contained" type="submit">
-//                                             <MDTypography color='white' variant="p">
-//                                                 Edit Worker
-//                                             </MDTypography>
-//                                         </Button>
-//                                     </MDBox>
-//                                 </MDBox>
-//                             </MDBox>
-//                         </form>
-//                     </Card>
-//                 </Grid>
-//             </Grid>
-//         </DashboardLayout>
-//     )
-// }
-
-// export default EditWorker
+export default EditWorkers

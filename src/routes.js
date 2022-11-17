@@ -9,6 +9,7 @@ import Authors from "layouts/authors"
 // import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import Customer from "layouts/Customers";
+import Worker from "layouts/Workers";
 import SignIn from "layouts/authentication/sign-in";
 // import SignUp from "layouts/authentication/sign-up";
 import Admins from "layouts/Admins";
@@ -35,12 +36,14 @@ import Icon from "@mui/material/Icon";
 import EditAdmin from "layouts/Admins/EditAdmin";
 import EditCustomers from "layouts/Customers/EditCustomers";
 import AddAdmin from "layouts/Admins/AddAdmin";
+import AddWorker from "layouts/Workers/AddWorkers";
 import AddReview from "layouts/Reviews/AddReview";
 import EditReview from "layouts/Reviews/EditReview";
 import AddCustomers from "layouts/Customers/AddCustomers";
 import Gallery from "layouts/Gallery";
 import AddGallery from "layouts/Gallery/AddGallery";
 import EditGallery from "layouts/Gallery/EditGallery";
+import EditWorker from "layouts/Workers/EditWorkers";
 import Service from "layouts/Service";
 import EditService from "layouts/Service/EditService";
 import AddService from "layouts/Service/AddService";
@@ -82,33 +85,33 @@ const routes = [
     component: <AddAdmin />,
     sidenav: false,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Workers",
-  //   key: "workers",
-  //   icon: <RiAdminLine />,
-  //   route: "/workers",
-  //   component: <Workers />,
-  //   sidenav: true,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Workers",
-  //   key: "workers",
-  //   icon: <RiAdminLine />,
-  //   route: "/workers/:id",
-  //   component: <EditWorker />,
-  //   sidenav: false,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Add Worker",
-  //   key: "add-worker",
-  //   icon: <Icon fontSize="small">forest</Icon>,
-  //   route: "/workers/add",
-  //   component: <AddWorker />,
-  //   sidenav: false,
-  // },
+  {
+    type: "collapse",
+    name: "Workers",
+    key: "workers",
+    icon: <RiAdminLine />,
+    route: "/workers",
+    component: <Worker />,
+    sidenav: true,
+  },
+  {
+    type: "collapse",
+    name: "Workers",
+    key: "workers",
+    icon: <RiAdminLine />,
+    route: "/workers/:id",
+    component: <EditWorker />,
+    sidenav: false,
+  },
+  {
+    type: "collapse",
+    name: "Add Worker",
+    key: "add-worker",
+    icon: <Icon fontSize="small">forest</Icon>,
+    route: "/workers/add",
+    component: <AddWorker />,
+    sidenav: false,
+  },
   {
     type: "collapse",
     name: "Customers",

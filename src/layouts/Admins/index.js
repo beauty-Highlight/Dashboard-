@@ -34,7 +34,7 @@ function Admin() {
 
     const deleteAdmin = async (id) => {
         if (window.confirm("Are you sure you want to delete this admin?")) {
-          const deleted = await fetch(`http://localhost:3000/admins/` + id, {
+          const deleted = await fetch(`http://localhost:3002/admins/` + id, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ function Admin() {
     }, [rows])
     useEffect(() => {
         async function getAdmins() {
-            const data = await fetch(`http://localhost:3000/admins`,
+            const data = await fetch(`http://localhost:3002/admins`,
             {
                 method: 'GET',
                 headers: new Headers({

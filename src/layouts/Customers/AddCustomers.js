@@ -30,7 +30,7 @@ function AddCustomers() {
     const addCustomer = async (event) => {
         event.preventDefault()
         console.log(Customer)        
-        const added = await fetch(`http://localhost:3000/Customers`, {
+        const added = await fetch(`http://localhost:3002/Customers`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

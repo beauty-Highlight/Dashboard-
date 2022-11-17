@@ -32,7 +32,7 @@ function EditWorkers() {
     const editWorker = async (event) => {
         event.preventDefault()
         // let adminData = new FormData(event.target)
-        const added = await fetch(`http://localhost:3000/workers/` +id , {
+        const added = await fetch(`http://localhost:3002/workers/` +id , {
             method: 'PUT',
             body: JSON.stringify(worker),
             headers: {
@@ -48,7 +48,7 @@ function EditWorkers() {
     }
     useEffect(() => {
         async function getWorker() {
-            const WorkerData = await fetch(`http://localhost:3000/workers/`)
+            const WorkerData = await fetch(`http://localhost:3002/workers/`)
             const json = await WorkerData.json()
             setWorker(json.data)
         }
@@ -69,6 +69,9 @@ function EditWorkers() {
                                   
                                     <MDBox mb={3}>
                                         <TextField value={worker?.email} onChange={(e) => { setWorker({ ...worker, email: e.target.value }) }} name="email" fullWidth label="worker Email" /></MDBox>
+
+                                        <MDBox mb={3}>
+                                        <TextField value={worker?.currentPassword} onChange={(e) => { setWorker({ ...worker, currentPassword: e.target.value }) }} name="currentPassword" fullWidth label="worker currentPassword" /></MDBox>
 
                                         <MDBox mb={3}>
                                         <TextField value={worker?.newPassword} onChange={(e) => { setWorker({ ...worker, newPassword: e.target.value }) }} name="newPassword" fullWidth label="worker newPassword" /></MDBox>

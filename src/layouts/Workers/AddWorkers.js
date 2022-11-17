@@ -30,7 +30,7 @@ function AddWorkers() {
     const AddWorker = async (event) => {
         event.preventDefault()
         console.log(worker)        
-        const added = await fetch(`http://localhost:3000/workers`, {
+        const added = await fetch(`http://localhost:3002/workers`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

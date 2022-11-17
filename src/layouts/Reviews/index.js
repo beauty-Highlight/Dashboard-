@@ -69,7 +69,7 @@ function Review() {
     }, [rows])
     useEffect(() => {
         async function getReviews() {
-            const data = await fetch(`http://localhost:3000/reviews/`);
+            const data = await fetch(`http://localhost:3002/reviews/`);
             const reviews = await data.json()
             setRows(reviews.data)
         }

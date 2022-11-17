@@ -34,7 +34,7 @@ function AddServices() {
     const addService = async (event) => {
         event.preventDefault()
         console.log(service)        
-        const added = await fetch(`http://localhost:3000/services`, {
+        const added = await fetch(`http://localhost:3002/services`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, 

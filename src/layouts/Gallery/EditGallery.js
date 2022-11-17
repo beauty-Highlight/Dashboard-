@@ -30,7 +30,7 @@ function EditGallery() {
     const editGallery = async (event) => {
         event.preventDefault()
         // let CategoryData = new FormData(event.target)
-        const edit = await fetch(`http://localhost:3000/galleries/:id`, {
+        const edit = await fetch(`http://localhost:3002/galleries/:id`, {
             method: 'PUT',
             body: JSON.stringify(gallery),
             headers: {
@@ -47,7 +47,7 @@ function EditGallery() {
 
     useEffect(() => {
         async function getGallery() {
-            const GalleryData = await fetch(`http://localhost:3000/galleries/`)
+            const GalleryData = await fetch(`http://localhost:3002/galleries/`)
             const json = await GalleryData.json()
             setGallery(json.data)
         }

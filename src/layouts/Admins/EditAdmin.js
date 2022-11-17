@@ -40,7 +40,7 @@ function EditAdmin() {
     const editAdmin = async (event) => {
         event.preventDefault()
         // let adminData = new FormData(event.target)
-        const added = await fetch(`http://localhost:3000/admins/` +id , {
+        const added = await fetch(`http://localhost:3002/admins/` +id , {
             method: 'PUT',
             body: JSON.stringify(admin),
             headers: {
@@ -69,7 +69,7 @@ function EditAdmin() {
     //   }
     useEffect(() => {
         async function getAdmin() {
-            const AdminData = await fetch(`${process.env.REACT_APP_API_URL}/admins/all`)
+            const AdminData = await fetch(`http://localhost:3002/admins`)
             const json = await AdminData.json()
             setAdmin(json.data)
         }

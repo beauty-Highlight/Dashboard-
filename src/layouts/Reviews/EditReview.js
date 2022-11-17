@@ -30,7 +30,7 @@ function EditReview() {
     const { id } = useParams()
     const EditReview = async (event) => {
         event.preventDefault()     
-        const edited = await fetch(`http://localhost:3000/reviews/` + id, {
+        const edited = await fetch(`http://localhost:3002/reviews/` + id, {
             method: 'PUT',
             body:  JSON.stringify(review),
             headers: {

@@ -29,7 +29,7 @@ function Gallery() {
     console.log("Token is ",token)
     const deleteGallery = async (id) => {
         if (window.confirm('Are you sure you want to delete this Gallery?')) {
-            const deleted = await fetch(`http://localhost:3000/galleries/:id`, {
+            const deleted = await fetch(`http://localhost:3002/galleries/` +id , {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function Gallery() {
     }, [rows])
     useEffect(() => {
         async function getGalleries() {
-            const data = await fetch(`http://localhost:3000/galleries/`);
+            const data = await fetch(`http://localhost:3002/galleries/`);
             const Galleries = await data.json()
             setRows(Galleries.data)
         }

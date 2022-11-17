@@ -36,7 +36,7 @@ function Worker() {
 
     const deleteWorker = async (id) => {
         if (window.confirm("Are you sure you want to delete this worker?")) {
-          const deleted = await fetch(`http://localhost:3000/workers/` + id, {
+          const deleted = await fetch(`http://localhost:3002/workers/` + id, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ function Worker() {
     }, [rows])
     useEffect(() => {
         async function getWorker() {
-            const data = await fetch(`http://localhost:3000/workers/`,
+            const data = await fetch(`http://localhost:3002/workers/`,
             {
                 method: 'GET',
                 headers: new Headers({

@@ -34,7 +34,7 @@ function EditServices() {
     const editService= async (event) => {
         event.preventDefault()
         // let CategoryData = new FormData(event.target)
-        const edit = await fetch(`http://localhost:3000/services/ ` +id , {
+        const edit = await fetch(`http://localhost:3002/services/ ` +id , {
             method: 'PUT',
             body: JSON.stringify(service),
             headers: {

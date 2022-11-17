@@ -33,7 +33,7 @@ function Customer() {
 
   const deleteCustomer = async (id) => {
     if (window.confirm('Are you sure you want to delete this Customer?')) {
-      const deleted = await fetch(`http://localhost:3000/customers/` + id, {
+      const deleted = await fetch(`http://localhost:3002/customers/` + id, {
         method: 'DELETE',
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function Customer() {
   }, [rows])
   useEffect(() => {
     async function getcustomers() {
-      const data = await fetch(`http://localhost:3000/customers`);
+      const data = await fetch(`http://localhost:3002/customers`);
       const customers = await data.json()
       setRows(customers.data)
     }

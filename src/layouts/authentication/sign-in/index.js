@@ -41,7 +41,7 @@ function Basic() {
   }) 
 
   const signIn = async () => {
-    const admin = await fetch(`http://localhost:3000/admins/logIn`, {
+    const admin = await fetch(`http://localhost:3002/admins/logIn`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {

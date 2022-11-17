@@ -30,7 +30,7 @@ function AddGallery() {
     const addGallery = async (event) => {
         event.preventDefault()
         console.log(gallery)        
-        const added = await fetch(`http://localhost:3000/galleries/`, {
+        const added = await fetch(`http://localhost:3002/galleries/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, 

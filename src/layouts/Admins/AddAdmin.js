@@ -29,7 +29,7 @@ function AddAdmin() {
     const addAdmin = async (event) => {
         event.preventDefault()
         console.log(admin)        
-        const added = await fetch(`http://localhost:3000/admins`, {
+        const added = await fetch(`http://localhost:3002/admins`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

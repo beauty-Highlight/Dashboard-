@@ -43,7 +43,7 @@ function EditCustomers() {
     const editCustomer = async (event) => {
         event.preventDefault()
         // console.log("userData",userData)
-        const edit = await fetch(`http://localhost:3000/Customers/` + id, {
+        const edit = await fetch(`http://localhost:3002/Customers/` + id, {
             method: 'PUT',
             body:   JSON.stringify(customer),
             headers: {
@@ -72,7 +72,7 @@ function EditCustomers() {
     //   }
     useEffect(() => {
         async function getCustomer() {
-            const CustomerData = await fetch(`http://localhost:3000/customers/all`)
+            const CustomerData = await fetch(`http://localhost:3002/customers/all`)
             const json = await CustomerData.json()
             setCustomer(json.data)
         }

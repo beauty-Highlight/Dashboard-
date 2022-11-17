@@ -34,7 +34,7 @@ function Service() {
     const [tableRows, setTableRows] = useState([])
     const deleteService = async (id) => {
         if (window.confirm('Are you sure you want to delete this service?')) {
-            const deleted = await fetch(`http://localhost:3000/services/` + id , {
+            const deleted = await fetch(`http://localhost:3002/services/` + id , {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function Service() {
     }, [rows])
     useEffect(() => {
         async function getServices() {
-            const data = await fetch(`http://localhost:3000/services/`,
+            const data = await fetch(`http://localhost:3002/services/`,
             {
                 method: 'GET',
                 headers: new Headers({

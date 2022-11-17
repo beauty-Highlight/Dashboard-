@@ -30,7 +30,7 @@ function AddReviews() {
     const navigate = useNavigate()
     const AddReview = async (event) => {
         event.preventDefault()     
-        const added = await fetch(`http://localhost:3000/reviews`, {
+        const added = await fetch(`http://localhost:3002/reviews`, {
             method: 'POST',
             body: JSON.stringify(review),
             headers: {

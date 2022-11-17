@@ -79,8 +79,17 @@ function EditWorkers() {
                                     <MDBox mb={3}>
                                         <TextField value={worker?.newPasswordConfirmation} onChange={(e) => { setWorker({ ...worker, newPasswordConfirmation: e.target.value }) }} name="newPasswordConfirmation" fullWidth label="worker newPasswordConfirmation" /></MDBox>
                                        
-                                   <MDBox mb={3}>
-                                        <TextField value={worker?.image} onChange={(e) => { setWorker({ ...worker, image: e.target.value }) }} name="image" fullWidth label="worker Image" /></MDBox>
+                                        <MDBox mb={3}>
+                                        <Button variant="contained" component="label" color='primary'>
+                                            <MDTypography color='white' variant="p">
+                                                <Grid container spacing={1}>
+                                                    <Grid item>image</Grid>
+                                                    <Grid item>Upload image</Grid>
+                                                </Grid>
+                                            </MDTypography>
+                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                        </Button>
+                                    </MDBox>
                                     <MDBox>
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">

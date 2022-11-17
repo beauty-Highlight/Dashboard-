@@ -12,6 +12,7 @@ import Icon from "@mui/material/Icon";
 import MDButton from "components/MDButton";
 import DataTable from "examples/Tables/DataTable";
 import { useEffect, useState } from "react";
+import { Avatar } from "@mui/material";
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
@@ -55,9 +56,14 @@ function Customer() {
         id: <>{Customer.id}</>,
         name: <>{Customer.name}</>,
         email: <>{Customer.email}</>,
-        image: <>{Customer.image}</>,
+        // image: <>{Customer.image}</>,
         password: <>{Customer.password}</>,
         passwordConfirmation: <>{Customer.passwordConfirmation}</>,
+        image: (
+          <>
+            <Avatar alt="" variant="square" src={Customer.image} sx={{ width: 100, height: 100 }} />
+          </>
+        ),
 
         options: <>
          <MDButton variant="text" color="error" onClick={() => { deleteCustomer(Customer.id) }}>

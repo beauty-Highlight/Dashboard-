@@ -14,6 +14,7 @@ import DataTable from "examples/Tables/DataTable";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 import { Link } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 
 
@@ -59,7 +60,12 @@ function Worker() {
                 email: <>{worker?.email}</>,
                 password: <>{worker?.password}</>,
                 passwordConfirmation: <>{worker?.passwordConfirmation}</>,
-                image: <>{worker?.image}</>,
+                // image: <>{worker?.image}</>,
+                image: (
+                    <>
+                      <Avatar alt="" variant="square" src={worker.image} sx={{ width: 100, height: 100 }} />
+                    </>
+                  ),
 
 
 

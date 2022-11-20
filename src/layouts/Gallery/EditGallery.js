@@ -29,8 +29,8 @@ function EditGallery() {
     const navigate = useNavigate()
     const editGallery = async (event) => {
         event.preventDefault()
-        // let CategoryData = new FormData(event.target)
-        const edit = await fetch(`http://localhost:3002/galleries/:id`, {
+        let CategoryData = new FormData(event.target)
+        const edit = await fetch(`http://localhost:3002/Galleries/` +id , {
             method: 'PUT',
             body: JSON.stringify(gallery),
             headers: {
@@ -41,13 +41,13 @@ function EditGallery() {
         const json = await edit.json()
         alert(json.messages.join(' '))
         if (json.success) {
-            navigate('/galleries')
+            navigate('/gallery')
         }
     }
 
     useEffect(() => {
         async function getGallery() {
-            const GalleryData = await fetch(`http://localhost:3002/galleries/`)
+            const GalleryData = await fetch(`http://localhost:3002/Galleries/ `)
             const json = await GalleryData.json()
             setGallery(json.data)
         }
@@ -67,7 +67,15 @@ function EditGallery() {
                                         <TextField value={gallery?.title} onChange={(e) => { setGallery({ ...gallery, title: e.target.value }) }} name="tilte" fullWidth label="gallery title" />
                                     </MDBox>
                                     <MDBox mb={3}>
-                                        <TextField value={gallery?.file} onChange={(e) => { setGallery({ ...gallery, file: e.target.value }) }} name="file" fullWidth label="gallery file" />
+                                        <Button variant="contained" component="label" color='primary'>
+                                            <MDTypography color='white' variant="p">
+                                                <Grid container spacing={1}>
+                                                    <Grid item>file</Grid>
+                                                    <Grid item>Upload file</Grid>
+                                                </Grid>
+                                            </MDTypography>
+                                            <input name='file' hidden accept="file/*" multiple type="file" />
+                                        </Button>
                                     </MDBox>
 
                                     <MDBox>

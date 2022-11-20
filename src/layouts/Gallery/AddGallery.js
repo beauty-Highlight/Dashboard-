@@ -28,9 +28,10 @@ function AddGallery() {
     })
     const navigate = useNavigate()
     const addGallery = async (event) => {
+        let GalleryDate = new FormData(event.target);
         event.preventDefault()
         console.log(gallery)        
-        const added = await fetch(`http://localhost:3002/galleries/`, {
+        const added = await fetch(`http://localhost:3002/Galleries`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, 
@@ -42,7 +43,7 @@ function AddGallery() {
         console.log(json)
         alert(json.messages.join(' '))
         if (json.success) {
-            navigate('/galleries')
+            navigate('/gallery')
         }
     }
     return (
@@ -56,7 +57,17 @@ function AddGallery() {
                                 <MDTypography variant='h5'>Add New Gallery</MDTypography>
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}><TextField name="title" fullWidth label="title" value={gallery.title} onChange={(e) => setGallery({...gallery, title: e.target.value})}/></MDBox>
-                                    <MDBox mb={3}><TextField name="file" fullWidth label="file" value={gallery.file} onChange={(e) => setGallery({...gallery, file: e.target.value})} /></MDBox>
+                                    <MDBox>
+                                    <Button variant="contained" component="label" color='primary'>
+                                            <MDTypography color='white' variant="p">
+                                                <Grid container spacing={1}>
+                                                    <Grid item><Icon>file</Icon></Grid>
+                                                    <Grid item>Upload file</Grid>
+                                                </Grid>
+                                            </MDTypography>
+                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                        </Button>
+                                    </MDBox>
                                     <MDBox>
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">

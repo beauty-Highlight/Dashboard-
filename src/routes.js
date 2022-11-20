@@ -155,7 +155,7 @@ const routes = [
     name: "Add gallery",
     key: "add-gallery",
     icon: <Icon fontSize="small">forest</Icon>,
-    route: "/galleries/add",
+    route: "/Galleries/add",
     component: <AddGallery />,
     sidenav: false,
   },

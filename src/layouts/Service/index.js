@@ -14,6 +14,8 @@ import DataTable from "examples/Tables/DataTable";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 import { Link } from "react-router-dom";
+import { Avatar } from "@mui/material";
+
 
 
 
@@ -58,7 +60,13 @@ function Service() {
                 price: <>{service?.price}</>,
                 time: <>{service?.time}</>,
                 descripiton: <>{service?.descripiton}</>,
-                image: <>{service?.image}</>,
+                // image: <>{service?.image}</>,
+                image: (
+                    <>
+                      <Avatar alt="" variant="square" src={service.image} sx={{ width: 100, height: 100 }} />
+                    </>
+                  ),
+
 
 
 

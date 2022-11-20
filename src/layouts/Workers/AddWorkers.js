@@ -28,6 +28,7 @@ function AddWorkers() {
     })
     const navigate = useNavigate()
     const AddWorker = async (event) => {
+        let WorkerDate = new FormData (event.target) ;
         event.preventDefault()
         console.log(worker)        
         const added = await fetch(`http://localhost:3002/workers`, {
@@ -36,7 +37,7 @@ function AddWorkers() {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
-            body:  JSON.stringify(worker)
+            body: WorkerDate ,
         })
         const json = await added.json()
         console.log(json)
@@ -71,6 +72,7 @@ function AddWorkers() {
                                         </Button>
                                     </MDBox>
                                     <MDBox>
+                                        
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
                                                 Add A New Worker

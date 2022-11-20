@@ -29,7 +29,7 @@ function Review() {
     const{token}= useContext(AuthContext)
     const deleteReview = async (id) => {
         if (window.confirm('Are you sure you want to delete this service?')) {
-            const deleted = await fetch(`http://localhost:3000/reviews/` + id , {
+            const deleted = await fetch(`http://localhost:3002/reviews/` + id , {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",

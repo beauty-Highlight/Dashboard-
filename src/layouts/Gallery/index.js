@@ -15,6 +15,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { AuthContext } from "context/Auth";
+import { Avatar } from "@mui/material";
 
 function Gallery() {
     const columns = [
@@ -29,8 +30,8 @@ function Gallery() {
     console.log("Token is ",token)
     const deleteGallery = async (id) => {
         if (window.confirm('Are you sure you want to delete this Gallery?')) {
-            const deleted = await fetch(`http://localhost:3002/galleries/` +id , {
-                method: 'PUT',
+            const deleted = await fetch(`http://localhost:3002/Galleries/` +id , {
+                method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${token}`,
@@ -50,7 +51,12 @@ function Gallery() {
             return {
                 id: <>{gallery.id}</>,
                 title: <>{gallery.title}</>,
-                file: <>{gallery.file}</>,
+                // file: <>{gallery.file}</>,
+                file: (
+                    <>
+                      <Avatar alt="" variant="square" src={gallery.file} sx={{ width: 100, height: 100 }} />
+                    </>
+                  ),
                 options: <>
                     <MDButton variant="text" color="error" onClick={() => { deleteGallery(gallery.id) }}>
                         <Icon>delete</Icon>&nbsp;delete
@@ -61,13 +67,14 @@ function Gallery() {
                         </MDButton>
                     </Link>
                 </>
+                
             };
         });
         setTableRows(jsxRows);
     }, [rows])
     useEffect(() => {
         async function getGalleries() {
-            const data = await fetch(`http://localhost:3002/galleries/`);
+            const data = await fetch(`http://localhost:3002/Galleries`);
             const Galleries = await data.json()
             setRows(Galleries.data)
         }
@@ -102,7 +109,7 @@ function Gallery() {
                                         </MDTypography>
                                     </Grid>
                                     <Grid item>
-                                        <Link to='/galleries/add'>
+                                        <Link to='/Galleries/add'>
                                             <MDButton variant="text" color="white">
                                                 <Icon>add_circle</Icon>&nbsp;Add
                                             </MDButton>

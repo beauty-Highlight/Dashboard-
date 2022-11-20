@@ -77,8 +77,17 @@ function EditServices() {
                                         <TextField value={service?.time} onChange={(e) => { setService({ ...service, time: e.target.value }) }} name="time" fullWidth label="service time" />
                                     </MDBox>  <MDBox mb={3}>
                                         <TextField value={service?.descripition} onChange={(e) => { setService({ ...service, descripition: e.target.value }) }} name="descripition" fullWidth label="service descripition" />
-                                    </MDBox>  <MDBox mb={3}>
-                                        <TextField value={service?.image} onChange={(e) => { setService({ ...service, image: e.target.value }) }} name="image" fullWidth label="service image" />
+                                    </MDBox>  
+                                    <MDBox mb={3}>
+                                        <Button variant="contained" component="label" color='primary'>
+                                            <MDTypography color='white' variant="p">
+                                                <Grid container spacing={1}>
+                                                    <Grid item>image</Grid>
+                                                    <Grid item>Upload image</Grid>
+                                                </Grid>
+                                            </MDTypography>
+                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                        </Button>
                                     </MDBox>
 
                                     <MDBox>

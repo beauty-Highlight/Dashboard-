@@ -63,9 +63,19 @@ function AddServices() {
                                     <MDBox mb={3}><TextField name="price" fullWidth label="price" value={service.price} onChange={(e) => setService({...service, price: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="time" fullWidth label="time" value={service.time} onChange={(e) => setService({...service, time: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="description" fullWidth label="description" value={service.description} onChange={(e) => setService({...service, description: e.target.value})} /></MDBox>
-                                    <MDBox mb={3}><TextField name="image" fullWidth label="image" value={service.image} onChange={(e) => setService({...service, image: e.target.value})} /></MDBox>
-
                                     <MDBox>
+                                    <Button variant="contained" component="label" color='primary'>
+                                            <MDTypography color='white' variant="p">
+                                                <Grid container spacing={1}>
+                                                    <Grid item><Icon>image</Icon></Grid>
+                                                    <Grid item>Upload image</Grid>
+                                                </Grid>
+                                            </MDTypography>
+                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                        </Button>
+                                    </MDBox>
+                                    <MDBox>
+
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
                                                 Add A New Service

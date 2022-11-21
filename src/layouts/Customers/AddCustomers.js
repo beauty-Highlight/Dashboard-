@@ -34,11 +34,10 @@ function AddCustomers() {
         console.log(Customer)        
         const added = await fetch(`http://localhost:3002/Customers`, {
             method: 'POST',
+            body:CustomerData,
             headers: {
-                "Content-Type": "application/json"
+                // 'Authorization': `Bearer ${token}`,
             },
-            // body:  JSON.stringify(CustomerData)
-            body : CustomerData ,
         })
         const json = await added.json()
         console.log(json)

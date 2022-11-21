@@ -18,7 +18,6 @@ import { AuthContext } from "context/Auth";
 
 function Review() {
     const columns = [
-        { Header: "id", accessor: "id", align: "left" },
         { Header: "content", accessor: "content", align: "left" },
         { Header: "customerId", accessor: "customerId", align: "center" },
         { Header: "stars", accessor: "stars", align: "center" },

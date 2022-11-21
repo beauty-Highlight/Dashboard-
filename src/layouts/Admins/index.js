@@ -20,11 +20,8 @@ import { Link } from "react-router-dom";
 function Admin() {
     const{token}= useContext(AuthContext)
     const columns = [
-        { Header: "id", accessor: "id", align: "left" },
         { Header: "name", accessor: "name", align: "left" },
         { Header: "email", accessor: "email", align: "center" },
-        { Header: "password", accessor: "password", align: "center" },
-        { Header: "passwordConfirmation", accessor: "passwordConfirmation", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
 
     ];

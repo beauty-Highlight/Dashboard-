@@ -22,7 +22,6 @@ import { Avatar } from "@mui/material";
 function Service() {
     const{token}= useContext(AuthContext)
     const columns = [
-        { Header: "id", accessor: "id", align: "left" },
         { Header: "title", accessor: "title", align: "left" },
         { Header: "price", accessor: "price", align: "center" },
         { Header: "image", accessor: "image", align: "center" },

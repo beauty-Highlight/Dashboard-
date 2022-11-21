@@ -21,11 +21,9 @@ import { Link } from "react-router-dom";
 
 function Customer() {
   const columns = [
-    { Header: "id", accessor: "id", align: "left" },
     { Header: "name", accessor: "name", align: "left" },
     { Header: "email", accessor: "email", align: "center" },
     { Header: "image", accessor: "image", align: "left" },
-    // { Header: "password", accessor: "password", align: "center" },
     { Header: "options", accessor: "options", align: "center" },
   ];
   const [rows, setRows] = useState([]);

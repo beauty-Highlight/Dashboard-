@@ -33,11 +33,10 @@ function AddGallery() {
         console.log(gallery)        
         const added = await fetch(`http://localhost:3002/Galleries`, {
             method: 'POST',
+            body:GalleryDate,
             headers: {
-                'Authorization': `Bearer ${token}`, 
-                "Content-Type": "application/json"
+                'Authorization': `Bearer ${token}`,
             },
-            body:  JSON.stringify(gallery)
         })
         const json = await added.json()
         console.log(json)
@@ -65,7 +64,7 @@ function AddGallery() {
                                                     <Grid item>Upload file</Grid>
                                                 </Grid>
                                             </MDTypography>
-                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                            <input name='file' hidden accept="file/*" multiple type="file" />
                                         </Button>
                                     </MDBox>
                                     <MDBox>

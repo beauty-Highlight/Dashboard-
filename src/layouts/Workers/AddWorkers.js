@@ -30,14 +30,15 @@ function AddWorkers() {
     const AddWorker = async (event) => {
         let WorkerDate = new FormData (event.target) ;
         event.preventDefault()
-        console.log(worker)        
-        const added = await fetch(`http://localhost:3002/workers`, {
+        console.log(worker)  
+
+            const added = await fetch(`http://localhost:3002/workers`, {
             method: 'POST',
+            body: WorkerDate ,
             headers: {
-                "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
-            body: WorkerDate ,
+           
         })
         const json = await added.json()
         console.log(json)
@@ -68,7 +69,7 @@ function AddWorkers() {
                                                     <Grid item>Upload image</Grid>
                                                 </Grid>
                                             </MDTypography>
-                                            <input name='image' hidden accept="image/*" multiple type="file" />
+                                            <input name='file' hidden accept="file/*" multiple type="file" />
                                         </Button>
                                     </MDBox>
                                     <MDBox>

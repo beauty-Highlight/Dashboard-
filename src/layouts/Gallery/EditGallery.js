@@ -32,9 +32,10 @@ function EditGallery() {
         let CategoryData = new FormData(event.target)
         const edit = await fetch(`http://localhost:3002/Galleries/` +id , {
             method: 'PUT',
-            body: JSON.stringify(gallery),
+            body:CategoryData,
+            // body: JSON.stringify(gallery),
             headers: {
-                "Content-Type": "application/json",
+                // "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
         })

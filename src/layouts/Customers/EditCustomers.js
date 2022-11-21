@@ -42,12 +42,13 @@ function EditCustomers() {
     const navigate = useNavigate()
     const editCustomer = async (event) => {
         event.preventDefault()
+        let CustomerData = new FormData(event.target)
         // console.log("userData",userData)
         const edit = await fetch(`http://localhost:3002/Customers/` + id, {
             method: 'PUT',
-            body:   JSON.stringify(customer),
+            body: CustomerData,  
             headers: {
-                "Content-Type": "application/json",
+                // "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
         })

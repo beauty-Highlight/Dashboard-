@@ -12,10 +12,13 @@ import { TextField } from "@mui/material";
 
 import Button from "@mui/material/Button";
 import Icon from "@mui/material/Icon";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/Auth";
+
 
 function AddCustomers() {
+    const{token}= useContext(AuthContext)
     const handleOnChange = (e) => {
         Customer[e.target.name] = Customer[e.target.value]
     }
@@ -36,7 +39,7 @@ function AddCustomers() {
             method: 'POST',
             body:CustomerData,
             headers: {
-                // 'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             },
         })
         const json = await added.json()
@@ -64,7 +67,7 @@ function AddCustomers() {
                                         <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
                                                 <Grid container spacing={1}>
-                                                    <Grid item><Icon>image</Icon></Grid>
+                                                    <Grid item><Icon>file</Icon></Grid>
                                                     <Grid item>Upload image</Grid>
                                                 </Grid>
                                             </MDTypography>
@@ -89,3 +92,4 @@ function AddCustomers() {
 }
 
 export default AddCustomers
+

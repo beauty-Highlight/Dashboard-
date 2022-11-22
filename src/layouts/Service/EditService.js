@@ -1,3 +1,5 @@
+
+
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout"
 import DashboardNavbar from "examples/Navbars/DashboardNavbar"
 
@@ -16,29 +18,29 @@ import { useParams } from "react-router-dom";
 
 import { AuthContext } from "context/Auth";
 
-function EditServices() {
+function EditService() {
     
     const { token } = useContext(AuthContext);
     console.log("token",token)
-    
+       const { id } = useParams()
     const [service, setService] = useState({
-        title: '',
-        price: '',
-        time: '',
-        descripition: '',
-        image: '',
-
+         title: '',
+         price: '',
+         time: '',
+         description: '',
+         image: '',
+         id: id
     })
-    const { id } = useParams()
+ 
+
     const navigate = useNavigate()
-    const editService= async (event) => {
+    const editService = async (event) => {
         event.preventDefault()
-        // let CategoryData = new FormData(event.target)
-        const edit = await fetch(`http://localhost:3002/services/ ` +id , {
+        let ServiceData = new FormData(event.target)
+        const edit = await fetch(`http://localhost:3002/services/` + id , {
             method: 'PUT',
-            body: JSON.stringify(service),
+            body:ServiceData,
             headers: {
-                "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
         })
@@ -48,10 +50,11 @@ function EditServices() {
             navigate('/services')
         }
     }
+        console.log("id",id)
 
     useEffect(() => {
         async function getService() {
-            const ServiceData = await fetch(`http://localhost:3000/services/`)
+            const ServiceData = await fetch(`http://localhost:3002/services `)
             const json = await ServiceData.json()
             setService(json.data)
         }
@@ -67,22 +70,23 @@ function EditServices() {
                             <MDBox p={3}>
                                 <MDTypography variant='h5'>Edit Service</MDTypography>
                                 <MDBox pt={4} pb={2}>
-                                    <MDBox mb={3}>
-                                        <TextField value={service?.title} onChange={(e) => { setService({ ...service, title: e.target.value }) }} name="tilte" fullWidth label="service title" />
-                                    </MDBox>
+                                <MDBox mb={3}>
+                                        <TextField value={service?.title} onChange={(e) => { setService({ ...service, title: e.target.value }) }} name="title" fullWidth label="service title" />
+                                   </MDBox>
                                     <MDBox mb={3}>
                                         <TextField value={service?.price} onChange={(e) => { setService({ ...service, price: e.target.value }) }} name="price" fullWidth label="service price" />
                                     </MDBox>
-                                    <MDBox mb={3}>
-                                        <TextField value={service?.time} onChange={(e) => { setService({ ...service, time: e.target.value }) }} name="time" fullWidth label="service time" />
-                                    </MDBox>  <MDBox mb={3}>
-                                        <TextField value={service?.descripition} onChange={(e) => { setService({ ...service, descripition: e.target.value }) }} name="descripition" fullWidth label="service descripition" />
-                                    </MDBox>  
+                                     <MDBox mb={3}>
+                                         <TextField value={service?.time} onChange={(e) => { setService({ ...service, time: e.target.value }) }} name="time" fullWidth label="service time" />
+                                     </MDBox>
+                                       <MDBox mb={3}>
+                                         <TextField value={service?.description} onChange={(e) => { setService({ ...service, description: e.target.value }) }} name="description" fullWidth label="service descripition" />
+                                     </MDBox>  
                                     <MDBox mb={3}>
                                         <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
                                                 <Grid container spacing={1}>
-                                                    <Grid item>image</Grid>
+                                                    <Grid item></Grid>
                                                     <Grid item>Upload image</Grid>
                                                 </Grid>
                                             </MDTypography>
@@ -107,4 +111,4 @@ function EditServices() {
     )
 }
 
-export default EditServices
+export default EditService

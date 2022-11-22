@@ -24,31 +24,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "context/Auth";
 
 function EditCustomers() {
-    const handleOnChange = (e) => {
-        customer[e.target.name] = customer[e.target.value]
-    }
+    // const handleOnChange = (e) => {
+    //     customer[e.target.name] = customer[e.target.value]
+    // }
+    
     const [customer, setCustomer] = useState({
         name: '',
         email: '',
         image:'',
-        currentPassword:'',
-        newPassword: '',
-        newPasswordConfirmation:'',
+        password:'',
         
     })
     const { token } = useContext(AuthContext);
-    // console.log("token",token)
     const { id } = useParams()
     const navigate = useNavigate()
     const editCustomer = async (event) => {
         event.preventDefault()
         let CustomerData = new FormData(event.target)
-        // console.log("userData",userData)
         const edit = await fetch(`http://localhost:3002/Customers/` + id, {
             method: 'PUT',
             body: CustomerData,  
             headers: {
-                // "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
         })
@@ -92,8 +88,7 @@ function EditCustomers() {
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}><TextField name="name" fullWidth label="name" value={customer.username} onChange={(e) => setCustomer({...customer, name: e.target.value})}/></MDBox>
                                     <MDBox mb={3}><TextField name="email" fullWidth label="Email" value={customer.email} onChange={(e) => setCustomer({...customer, email: e.target.value})} /></MDBox>
-                                    <MDBox mb={3}><TextField name="currentPassword" fullWidth label="currentPassword" value={customer.image} onChange={(e) => setCustomer({...customer, currentPassword: e.target.value})} /></MDBox>
-                                    <MDBox mb={3}><TextField name="newPassword" fullWidth label="Password" value={customer.password} onChange={(e) => setCustomer({...customer, password: e.target.value})} /></MDBox>
+                                    <MDBox mb={3}><TextField name="password" fullWidth label="password" value={customer.password} onChange={(e) => setCustomer({...customer, password: e.target.value})} /></MDBox>
                                     <MDBox mb={3}>
                                         <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">

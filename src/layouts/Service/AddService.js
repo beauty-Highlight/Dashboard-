@@ -1,3 +1,5 @@
+
+
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout"
 import DashboardNavbar from "examples/Navbars/DashboardNavbar"
 
@@ -9,17 +11,17 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { TextField } from "@mui/material";
 
+
 import Button from "@mui/material/Button";
 import Icon from "@mui/material/Icon";
 import { useRef, useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
-import Service from ".";
 
-function AddServices() {
+function AddService() {
     const{token}= useContext(AuthContext)
     const handleOnChange = (e) => {
-        Service[e.target.name] = Service[e.target.value]
+        service[e.target.name] = service[e.target.value]
     }
     const [service, setService]= useState({
         title:'',
@@ -27,26 +29,24 @@ function AddServices() {
         time:'',
         description:'',
         image:'',
-
-        
     })
     const navigate = useNavigate()
-    const addService = async (event) => {
+    const AddService = async (event) => {
+        let ServiceDate = new FormData(event.target);
         event.preventDefault()
         console.log(service)        
         const added = await fetch(`http://localhost:3002/services`, {
             method: 'POST',
+            body:ServiceDate,
             headers: {
-                'Authorization': `Bearer ${token}`, 
-                "Content-Type": "application/json"
+                'Authorization': `Bearer ${token}`,
             },
-            body:  JSON.stringify(service)
         })
         const json = await added.json()
         console.log(json)
         alert(json.messages.join(' '))
         if (json.success) {
-            navigate('/services')
+            navigate('/Services')
         }
     }
     return (
@@ -55,7 +55,7 @@ function AddServices() {
             <Grid container spacing={6}>
                 <Grid item xs={12}>
                     <Card>
-                        <form method="post" onSubmit={addService}>
+                        <form method="post" onSubmit={AddService}>
                             <MDBox p={3}>
                                 <MDTypography variant='h5'>Add New Service</MDTypography>
                                 <MDBox pt={4} pb={2}>
@@ -75,7 +75,6 @@ function AddServices() {
                                         </Button>
                                     </MDBox>
                                     <MDBox>
-
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
                                                 Add A New Service
@@ -92,4 +91,4 @@ function AddServices() {
     )
 }
 
-export default AddServices
+export default AddService

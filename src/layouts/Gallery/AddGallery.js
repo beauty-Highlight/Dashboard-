@@ -70,7 +70,7 @@ function AddGallery() {
                                     <MDBox>
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
-                                                Add A New Gallery
+                                                Add A New  
                                             </MDTypography>
                                         </Button>
                                     </MDBox>

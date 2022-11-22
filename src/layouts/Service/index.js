@@ -1,3 +1,4 @@
+
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
@@ -11,36 +12,33 @@ import MDTypography from "components/MDTypography";
 import Icon from "@mui/material/Icon";
 import MDButton from "components/MDButton";
 import DataTable from "examples/Tables/DataTable";
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../../context/Auth";
+import { useContext, useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
+import { AuthContext } from "context/Auth";
 import { Avatar } from "@mui/material";
 
-
-
-
 function Service() {
-    const{token}= useContext(AuthContext)
     const columns = [
-        { Header: "title", accessor: "title", align: "left" },
+        { Header: "tiltle", accessor: "title", align: "left" },
         { Header: "price", accessor: "price", align: "center" },
-        { Header: "image", accessor: "image", align: "center" },
         { Header: "time", accessor: "time", align: "center" },
         { Header: "description", accessor: "description", align: "center" },
+        { Header: "image", accessor: "image", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
-
     ];
-
     const [rows, setRows] = useState([]);
     const [tableRows, setTableRows] = useState([])
+    const{token}= useContext(AuthContext)
+    console.log("Token is ",token)
     const deleteService = async (id) => {
-        if (window.confirm('Are you sure you want to delete this service?')) {
-            const deleted = await fetch(`http://localhost:3002/services/` + id , {
+        if (window.confirm('Are you sure you want to delete this Service?')) {
+            const deleted = await fetch(`http://localhost:3002/services/` +id , {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${token}`,
-                }
+                },
             })
             const result = await deleted.json()
             const remainedRows = rows.filter((service) => {
@@ -54,21 +52,17 @@ function Service() {
     useEffect(() => {
         const jsxRows = rows?.map((service) => {
             return {
-                id: <>{service?.id}</>,
+                id: <>{service?.id} </>,
                 title: <>{service?.title}</>,
-                price: <>{service?.price}</>,
+                price: <>{service?.price }</>,
+                // image: <>{service?.image} </>,
                 time: <>{service?.time}</>,
-                descripiton: <>{service?.descripiton}</>,
-                // image: <>{service?.image}</>,
+                description: <>{service?.description}</>,
                 image: (
                     <>
-                      <Avatar alt="" variant="square" src={service.image} sx={{ width: 100, height: 100 }} />
+                      <Avatar alt="" variant="square" src={service?.image} sx={{ width: 100, height: 100 }} />
                     </>
                   ),
-
-
-
-
                 options: <>
                     <MDButton variant="text" color="error" onClick={() => { deleteService(service.id) }}>
                         <Icon>delete</Icon>&nbsp;delete
@@ -79,29 +73,19 @@ function Service() {
                         </MDButton>
                     </Link>
                 </>
+                
             };
         });
         setTableRows(jsxRows);
     }, [rows])
     useEffect(() => {
         async function getServices() {
-            const data = await fetch(`http://localhost:3002/services/`,
-            {
-                method: 'GET',
-                headers: new Headers({
-                    'Authorization': `Bearer ${token}`, 
-                  }),
-                redirect: 'follow'
-            }
-            );
-            const services = await data.json()
-            if(services?.success){
-                setRows(services.data)
-            }
+            const data = await fetch(`http://localhost:3002/services`);
+            const Services = await data.json()
+            setRows(Services.data)
         }
         getServices();
     }, []);
-    console.log(rows)
     return (
         <DashboardLayout>
             <DashboardNavbar />
@@ -131,7 +115,7 @@ function Service() {
                                         </MDTypography>
                                     </Grid>
                                     <Grid item>
-                                        <Link to='/services/add'>
+                                        <Link to='/Services/add'>
                                             <MDButton variant="text" color="white">
                                                 <Icon>add_circle</Icon>&nbsp;Add
                                             </MDButton>

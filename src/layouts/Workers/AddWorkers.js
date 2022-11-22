@@ -16,7 +16,7 @@ import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "context/Auth";
 
-function AddWorkers() {
+function AddWorker() {
     const { token } = useContext(AuthContext);
     const [worker, setWorker]= useState({
         name:'',
@@ -27,7 +27,7 @@ function AddWorkers() {
  
     })
     const navigate = useNavigate()
-    const AddWorker = async (event) => {
+    const addWorker = async (event) => {
         let WorkerDate = new FormData (event.target) ;
         event.preventDefault()
         console.log(worker)  
@@ -36,6 +36,7 @@ function AddWorkers() {
             method: 'POST',
             body: WorkerDate ,
             headers: {
+            //    'Content-Type': "multipart/form-data",
                 'Authorization': `Bearer ${token}`,
             },
            
@@ -53,14 +54,14 @@ function AddWorkers() {
             <Grid container spacing={6}>
                 <Grid item xs={12}>
                     <Card>
-                        <form method="POST" onSubmit={AddWorker}>
+                        <form method="POST" onSubmit={addWorker}>
                             <MDBox p={3}>
                                 <MDTypography variant='h5'>Add New worker</MDTypography>
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}><TextField name="name" fullWidth label="name" value={worker.name} onChange={(e) => setWorker({...worker,name: e.target.value})}/></MDBox>
                                     <MDBox mb={3}><TextField name="email" fullWidth label="Email" value={worker.email} onChange={(e) => setWorker({...worker, email: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="password" fullWidth label="Password" value={worker.password} onChange={(e) => setWorker({...worker, password: e.target.value})} /></MDBox>
-                                    <MDBox mb={3}><TextField name="password" fullWidth label="PasswordConfirmation" value={worker.passwordConfirmation} onChange={(e) => setWorker({...worker, passwordConfirmation: e.target.value})} /></MDBox>
+                                    <MDBox mb={3}><TextField name="passwordConfirmation" fullWidth label="passwordConfirmation" value={worker.passwordConfirmation} onChange={(e) => setWorker({...worker, passwordConfirmation: e.target.value})} /></MDBox>
                                     <MDBox mb={3}>
                                         <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
@@ -69,7 +70,7 @@ function AddWorkers() {
                                                     <Grid item>Upload image</Grid>
                                                 </Grid>
                                             </MDTypography>
-                                            <input name='file' hidden accept="file/*" multiple type="file" />
+                                            <input name='image' hidden accept="image/*" multiple type="file" />
                                         </Button>
                                     </MDBox>
                                     <MDBox>
@@ -90,4 +91,4 @@ function AddWorkers() {
     )
 }
 
-export default AddWorkers
+export default AddWorker

@@ -83,7 +83,7 @@ function EditWorkers() {
                                         <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
                                                 <Grid container spacing={1}>
-                                                    <Grid item>image</Grid>
+                                                    <Grid item></Grid>
                                                     <Grid item>Upload image</Grid>
                                                 </Grid>
                                             </MDTypography>

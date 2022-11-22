@@ -23,8 +23,9 @@ function Worker() {
     const columns = [
         { Header: "name", accessor: "name", align: "left" },
         { Header: "email", accessor: "email", align: "center" },
-        { Header: "options", accessor: "options", align: "center" },
         { Header: "image", accessor: "image", align: "center" },
+        { Header: "options", accessor: "options", align: "center" },
+
 
 
     ];
@@ -57,7 +58,7 @@ function Worker() {
                 email: <>{worker?.email}</>,
                 password: <>{worker?.password}</>,
                 passwordConfirmation: <>{worker?.passwordConfirmation}</>,
-                image: <>{worker?.image}</>,
+                // image: <>{worker?.image}</>,
                 image: (
                     <>
                       <Avatar alt="" variant="square" src={worker.image} sx={{ width: 100, height: 100 }} />

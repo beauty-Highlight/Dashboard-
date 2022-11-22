@@ -42,7 +42,7 @@ function AddReviews() {
         console.log(json)
         alert(json.messages.join(' '))
         if (json.success) {
-            navigate('/reviews')
+            navigate('/review')
         }
     }
     return (

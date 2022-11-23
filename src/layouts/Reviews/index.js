@@ -57,9 +57,9 @@ function Review() {
                         <Icon>delete</Icon>&nbsp;delete
                     </MDButton>
                     <Link to={`/reviews/${review.id}`}>
-                        <MDButton variant="text" color="dark">
+                        {/* <MDButton variant="text" color="dark">
                             <Icon>edit</Icon>&nbsp;edit
-                        </MDButton>
+                        </MDButton> */}
                     </Link>
                 </>
             };
@@ -105,7 +105,7 @@ function Review() {
                                     <Grid item>
                                         <Link to='/reviews/add'>
                                             <MDButton variant="text" color="white">
-                                                <Icon>add_circle</Icon>&nbsp;Add
+                                                {/* <Icon>add_circle</Icon>&nbsp;Add */}
                                             </MDButton>
                                         </Link>
                                     </Grid>

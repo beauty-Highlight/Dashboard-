@@ -53,7 +53,7 @@ function EditReview() {
                     <Card>
                         <form method="post" onSubmit={EditReview}>
                             <MDBox p={3}>
-                                <MDTypography variant='h5'>Edit Review</MDTypography>
+                                <MDTypography variant='h5'></MDTypography>
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}><TextField name="content" fullWidth label="content" value={review.content} onChange={(e) => setReview({...review, content: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="customerId" fullWidth label="customerId" value={review.customerId} onChange={(e) => setReview({...review, customerId: e.target.value})}/></MDBox>
@@ -61,7 +61,7 @@ function EditReview() {
                                     <MDBox>
                                         <Button variant="contained" type="submit">
                                             <MDTypography color='white' variant="p">
-                                               Edit Review
+                                               {/* Edit Review */}
                                             </MDTypography>
                                         </Button>
                                     </MDBox>

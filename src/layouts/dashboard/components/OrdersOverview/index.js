@@ -26,8 +26,9 @@ import TimelineItem from "examples/Timeline/TimelineItem";
 
 function OrdersOverview() {
   return (
-    <Card sx={{ height: "100%" }}>
-      <MDBox pt={3} px={3}>
+
+    <Card sx={{ height: "" }}>
+      {/* <MDBox pt={3} px={3}>
         <MDTypography variant="h6" fontWeight="medium">
           Orders overview
         </MDTypography>
@@ -43,8 +44,8 @@ function OrdersOverview() {
             this month
           </MDTypography>
         </MDBox>
-      </MDBox>
-      <MDBox p={2}>
+      </MDBox> 
+       <MDBox p={2}>
         <TimelineItem
           color="success"
           icon="notifications"
@@ -76,8 +77,9 @@ function OrdersOverview() {
           dateTime="18 DEC 4:54 AM"
           lastItem
         />
-      </MDBox>
-    </Card>
+      </MDBox> */}
+      </Card>
+  
   );
 }
 

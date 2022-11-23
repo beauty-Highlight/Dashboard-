@@ -19,7 +19,7 @@ import { Avatar } from "@mui/material";
 
 function Gallery() {
     const columns = [
-        { Header: "tiltle", accessor: "title", align: "left" },
+        { Header: "title", accessor: "title", align: "left" },
         { Header: "file", accessor: "file", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
     ];

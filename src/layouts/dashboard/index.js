@@ -26,7 +26,8 @@ import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-
+import { useContext, useEffect, useState } from "react";
+// import { AuthContext } from "context/AuthContext";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
@@ -37,7 +38,23 @@ import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  // const ctx = useContext(AuthContext)
 
+  const [customers, setCustomers] = useState([])
+  // const [users, setCustomer] = useState([])
+
+ useEffect(()=>{
+  fetch(`http://localhost:3002/Customers`)
+  .then(response => {
+    response.json().then(customer => {
+      console.log(customer.data.length, "hhhhhhhhhh")
+      setCustomers(customer?.data)
+  })
+  })
+ },[] ) 
+
+ console.log("highlighter", customers.length)
+ const customerN = customers.length
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -47,13 +64,13 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="dark"
-                icon="weekend"
-                title="Bookings"
-                count={281}
+                icon="person_add"
+                title="Customers"
+                count={customerN}
                 percentage={{
                   color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
+                  // amount: "+55%",
+                  // label: "than lask week",
                 }}
               />
             </MDBox>
@@ -105,7 +122,7 @@ function Dashboard() {
         </Grid>
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
@@ -115,8 +132,8 @@ function Dashboard() {
                   chart={reportsBarChartData}
                 />
               </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            </Grid> */}
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
@@ -130,8 +147,8 @@ function Dashboard() {
                   chart={sales}
                 />
               </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            </Grid> */}
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="dark"
@@ -141,7 +158,7 @@ function Dashboard() {
                   chart={tasks}
                 />
               </MDBox>
-            </Grid>
+            </Grid> */}
           </Grid>
         </MDBox>
         <MDBox>

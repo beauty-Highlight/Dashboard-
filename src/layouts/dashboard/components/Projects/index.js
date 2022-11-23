@@ -61,13 +61,13 @@ function Projects() {
 
   return (
     <Card>
-      <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+      {/* <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}> */}
         <MDBox>
-          <MDTypography variant="h6" gutterBottom>
+          {/* <MDTypography variant="h6" gutterBottom>
             Projects
-          </MDTypography>
+          </MDTypography> */}
           <MDBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
+            {/* <Icon
               sx={{
                 fontWeight: "bold",
                 color: ({ palette: { info } }) => info.main,
@@ -75,20 +75,20 @@ function Projects() {
               }}
             >
               done
-            </Icon>
-            <MDTypography variant="button" fontWeight="regular" color="text">
+            </Icon> */}
+            {/* <MDTypography variant="button" fontWeight="regular" color="text">
               &nbsp;<strong>30 done</strong> this month
-            </MDTypography>
+            </MDTypography> */}
           </MDBox>
         </MDBox>
-        <MDBox color="text" px={2}>
+        {/* <MDBox color="text" px={2}>
           <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
             more_vert
           </Icon>
-        </MDBox>
+        </MDBox> */}
         {renderMenu}
-      </MDBox>
-      <MDBox>
+      {/* </MDBox> */}
+      {/* <MDBox>
         <DataTable
           table={{ columns, rows }}
           showTotalEntries={false}
@@ -96,7 +96,7 @@ function Projects() {
           noEndBorder
           entriesPerPage={false}
         />
-      </MDBox>
+      </MDBox> */}
     </Card>
   );
 }

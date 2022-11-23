@@ -29,7 +29,7 @@ import Transaction from "layouts/billing/components/Transaction";
 function Transactions() {
   return (
     <Card sx={{ height: "100%" }}>
-      <MDBox display="flex" justifyContent="space-between" alignItems="center" pt={3} px={2}>
+      {/* <MDBox display="flex" justifyContent="space-between" alignItems="center" pt={3} px={2}>
         <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
           Your Transaction&apos;s
         </MDTypography>
@@ -43,14 +43,14 @@ function Transactions() {
             23 - 30 March 2020
           </MDTypography>
         </MDBox>
-      </MDBox>
+      </MDBox> */}
       <MDBox pt={3} pb={2} px={2}>
-        <MDBox mb={2}>
+        {/* <MDBox mb={2}>
           <MDTypography variant="caption" color="text" fontWeight="bold" textTransform="uppercase">
             newest
           </MDTypography>
-        </MDBox>
-        <MDBox
+        </MDBox> */}
+        {/* <MDBox
           component="ul"
           display="flex"
           flexDirection="column"
@@ -72,13 +72,13 @@ function Transactions() {
             description="27 March 2020, at 04:30 AM"
             value="+ $ 2,000"
           />
-        </MDBox>
-        <MDBox mt={1} mb={2}>
+        </MDBox> */}
+        {/* <MDBox mt={1} mb={2}>
           <MDTypography variant="caption" color="text" fontWeight="bold" textTransform="uppercase">
             yesterday
           </MDTypography>
-        </MDBox>
-        <MDBox
+        </MDBox> */}
+        {/* <MDBox
           component="ul"
           display="flex"
           flexDirection="column"
@@ -114,7 +114,7 @@ function Transactions() {
             description="26 March 2020, at 05:00 AM"
             value="Pending"
           />
-        </MDBox>
+        </MDBox> */}
       </MDBox>
     </Card>
   );

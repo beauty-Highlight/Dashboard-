@@ -63,7 +63,7 @@ function EditGallery() {
                                 <MDTypography variant='h5'>Edit Gallery</MDTypography>
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}>
-                                        <TextField value={gallery?.title} onChange={(e) => { setGallery({ ...gallery, title: e.target.value }) }} name="tilte" fullWidth label="gallery title" />
+                                        <TextField value={gallery?.title} onChange={(e) => { setGallery({ ...gallery, title: e.target.value }) }} name="title" fullWidth label="gallery title" />
                                     </MDBox>
                                     <MDBox mb={3}>
                                         <Button variant="contained" component="label" color='primary'>

@@ -68,9 +68,9 @@ function Customer() {
             <Icon>delete</Icon>&nbsp;delete
           </MDButton>
           <Link to={`/customers/${Customer.id}`}>
-            <MDButton variant="text" color="dark">
+            {/* <MDButton variant="text" color="dark">
               <Icon>edit</Icon>&nbsp;edit
-            </MDButton>
+            </MDButton> */}
           </Link>
         </>
       };
@@ -115,9 +115,9 @@ function Customer() {
                   </Grid>
                   <Grid item>
                     <Link to='/customers/add'>
-                      <MDButton variant="text" color="white">
+                      {/* <MDButton variant="text" color="white">
                         <Icon>add_circle</Icon>&nbsp;Add
-                      </MDButton>
+                      </MDButton> */}
                     </Link>
                   </Grid>
                 </Grid>

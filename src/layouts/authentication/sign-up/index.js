@@ -33,25 +33,25 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
 function Cover() {
-  // const Signup = async () => {
-  //     const admin = await fetch(process.env.REACT_APP_API_URL+'/admins', {
-  //       method: 'POST',
-  //       body: JSON.stringify(user),
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
-  //     const json = await admin.json()
+  const Signup = async () => {
+      const admin = await fetch(process.env.REACT_APP_API_URL+'/admins', {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const json = await admin.json()
       
-  //     if (json.success) {
+      if (json.success) {
       
-  //       authCtx.login(json.token)
-  //       navigate('/admins')
-  //       window.alert('You Loged in')
-  //     } else {
-  //       setFailedToLogin(true)
-  //     }
-  // }
+        authCtx.login(json.token)
+        navigate('/admins')
+        window.alert('You Loged in')
+      } else {
+        setFailedToLogin(true)
+      }
+  }
   return (
     <CoverLayout image={bgImage}>
       <Card>

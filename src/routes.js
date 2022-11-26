@@ -11,6 +11,7 @@ import Profile from "layouts/profile";
 import Customer from "layouts/Customers";
 import Worker from "layouts/Workers";
 import SignIn from "layouts/authentication/sign-in";
+import SignOut from "layouts/signOut/signOut";
 // import SignUp from "layouts/authentication/sign-up";
 import Admins from "layouts/Admins";
 import Review from "layouts/Reviews";
@@ -21,8 +22,9 @@ import { MdPeopleAlt } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 // import { BiCategoryAlt } from "react-icons/bi";
 // import { SiBookstack } from "react-icons/si";
-// import { BiCommentDetail } from "react-icons/bi";
+import { BiCommentDetail } from "react-icons/bi";
 import { MdRateReview } from "react-icons/md";
+// import {MdRateAppointme} from "react-icons/md"
 
 
 
@@ -47,6 +49,9 @@ import EditWorker from "layouts/Workers/EditWorkers";
 import Service from "layouts/Service";
 import EditService from "layouts/Service/EditService";
 import AddService from "layouts/Service/AddService";
+import Appointment from "layouts/appointment";
+import EditAppointment from "layouts/appointment/EditAppointment";
+import AddAppointment from "layouts/appointment/AddAppointment";
 
 const routes = [
   {
@@ -225,6 +230,33 @@ const routes = [
   },
   {
     type: "collapse",
+    name: "Appointments",
+    key: "Appointmentss",
+    icon: <BiCommentDetail />,
+    route: "/appointments",
+    component: <Appointment />,
+    sidenav: true,
+  },
+  {
+    type: "collapse",
+    name: "Add Appointments",
+    key: "add-Appointment",
+    icon: <Icon fontSize="small">forest</Icon>,
+    route: "/Appointments/add",
+    component: <AddAppointment />,
+    sidenav: false,
+  },
+  {
+    type: "collapse",
+    name: "Edit appointments",
+    key: "Edit Appointments",
+    icon: <Icon fontSize="small">forest</Icon>,
+    route: "/appointments/:id",
+    component: <EditAppointment />,
+    sidenav: false,
+  },
+  {
+    type: "collapse",
     name: "Reviews",
     key: "Reviews",
     icon: <MdRateReview />,
@@ -267,7 +299,7 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
-    sidenav: true,
+    sidenav: false,
   },
   // {
   //   type: "collapse",
@@ -278,6 +310,16 @@ const routes = [
   //   component: <SignUp />,
   //   sidenav: true,
   // },
+  {
+    type: "collapse",
+    name: "SignOut",
+    key: "SignOut",
+    icon: <Icon fontSize="small">SignOut</Icon>,
+    route: "/authentication/sign-in",
+    component: <SignOut/>,
+    sidenav: true,
+    
+  },
 ];
 
 export default routes;

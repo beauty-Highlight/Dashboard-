@@ -56,7 +56,8 @@ function AddGallery() {
                                 <MDTypography variant='h5'>Add New Gallery</MDTypography>
                                 <MDBox pt={4} pb={2}>
                                     <MDBox mb={3}><TextField name="title" fullWidth label="title" value={gallery.title} onChange={(e) => setGallery({...gallery, title: e.target.value})}/></MDBox>
-                                    <MDBox>
+                                    <MDBox mb={3}>
+                                        
                                     <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
                                                 <Grid container spacing={1}>

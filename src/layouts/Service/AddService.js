@@ -63,7 +63,7 @@ function AddService() {
                                     <MDBox mb={3}><TextField name="price" fullWidth label="price" value={service.price} onChange={(e) => setService({...service, price: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="time" fullWidth label="time" value={service.time} onChange={(e) => setService({...service, time: e.target.value})} /></MDBox>
                                     <MDBox mb={3}><TextField name="description" fullWidth label="description" value={service.description} onChange={(e) => setService({...service, description: e.target.value})} /></MDBox>
-                                    <MDBox>
+                                    <MDBox mb={3}>
                                     <Button variant="contained" component="label" color='primary'>
                                             <MDTypography color='white' variant="p">
                                                 <Grid container spacing={1}>

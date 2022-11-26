@@ -40,7 +40,11 @@ function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
   // const ctx = useContext(AuthContext)
 
-  const [customers, setCustomers] = useState([])
+  const [customers, setCustomers] = useState([]);
+  const [Services, setServices] = useState([]);
+  const [Reviews, setReviews] = useState([]);
+  const [Workers, setWorkers] = useState([]);
+
   // const [users, setCustomer] = useState([])
 
  useEffect(()=>{
@@ -52,9 +56,50 @@ function Dashboard() {
   })
   })
  },[] ) 
-
  console.log("highlighter", customers.length)
  const customerN = customers.length
+
+
+ useEffect(()=>{
+  fetch(`http://localhost:3002/services`)
+  .then(response => {
+    response.json().then(service => {
+      console.log(service.data.length, "hhhhhhhhhh")
+      setServices(service?.data)
+  })
+  })
+ },[] ) 
+ console.log("highlighter", Services.length)
+ const serviceN = Services.length
+
+
+ useEffect(()=>{
+  fetch(`http://localhost:3002/reviews`)
+  .then(response => {
+    response.json().then(review => {
+      console.log(review.data.length, "hhhhhhhhhh")
+      setReviews(review?.data)
+  })
+  })
+ },[] ) 
+ console.log("highlighter", Reviews.length)
+ const reviewN = Reviews.length
+
+
+ useEffect(()=>{
+  fetch(`http://localhost:3002/workers`)
+  .then(response => {
+    response.json().then(worker => {
+      console.log(worker.data.length, "hhhhhhhhhh")
+      setWorkers(worker?.data)
+  })
+  })
+ },[] ) 
+ console.log("highlighter", Workers.length)
+ const workerN = Workers.length
+
+ 
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -75,16 +120,17 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
+          
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
-                count="2,300"
+                title="Services"
+                count={serviceN}
                 percentage={{
                   color: "success",
-                  amount: "+3%",
-                  label: "than last month",
+                  // amount: "+3%",
+                  // label: "than last month",
                 }}
               />
             </MDBox>
@@ -94,12 +140,12 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Revenue"
-                count="34k"
+                title="Reviews"
+                count={reviewN}
                 percentage={{
                   color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  // amount: "+1%",
+                  // label: "than yesterday",
                 }}
               />
             </MDBox>
@@ -109,12 +155,12 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Followers"
-                count="+91"
+                title="Workers"
+                count={workerN}
                 percentage={{
                   color: "success",
-                  amount: "",
-                  label: "Just updated",
+                  // amount: "",
+                  // label: "Just updated",
                 }}
               />
             </MDBox>

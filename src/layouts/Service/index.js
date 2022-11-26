@@ -22,8 +22,8 @@ function Service() {
     const columns = [
         { Header: "tiltle", accessor: "title", align: "left" },
         { Header: "price", accessor: "price", align: "center" },
-        { Header: "time", accessor: "time", align: "center" },
-        // { Header: "description", accessor: "description", align: "center" },
+        // { Header: "time", accessor: "time", align: "center" },
+        { Header: "description", accessor: "description", align: "center" },
         { Header: "image", accessor: "image", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
     ];

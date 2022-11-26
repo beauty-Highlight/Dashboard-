@@ -1,13 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-Coded by www.creative-tim.com
- =========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useEffect } from "react";
 
@@ -30,7 +20,7 @@ import MDButton from "components/MDButton";
 
 // Material Dashboard 2 React example components
 import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
-
+import { useContext } from "react";
 // Custom styles for the Sidenav
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
 import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
@@ -42,8 +32,12 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
+import { AuthContext } from "../../context/Auth";
+
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
+  const {  logout }  = useContext(AuthContext)
+  
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const location = useLocation();
@@ -104,7 +98,9 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           />
         </Link>
       ) : (
-        <NavLink key={key} to={route}>
+        <NavLink key={key} to={route} onClick={()=>{
+          if(name=='SignOut') logout()
+        }}> 
           <SidenavCollapse name={name} icon={icon} active={key === collapseName} />
         </NavLink>
       );
@@ -135,8 +131,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           }
         />
       );
-    }
-
+    } 
     return returnValue;
   });
 

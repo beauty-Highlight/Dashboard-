@@ -31,12 +31,11 @@ function EditWorkers() {
     const navigate = useNavigate()
     const editWorker = async (event) => {
         event.preventDefault()
-        // let adminData = new FormData(event.target)
+        let workerData = new FormData(event.target)
         const added = await fetch(`http://localhost:3002/workers/` +id , {
             method: 'PUT',
-            body: JSON.stringify(worker),
+            body:workerData,
             headers: {
-                "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`,
             },
         })

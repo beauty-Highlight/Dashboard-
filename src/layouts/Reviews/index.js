@@ -18,8 +18,8 @@ import { AuthContext } from "context/Auth";
 
 function Review() {
     const columns = [
-        { Header: "content", accessor: "content", align: "left" },
-        { Header: "customerId", accessor: "customerId", align: "center" },
+        { Header: "Content", accessor: "content", align: "left" },
+        { Header: "Customer Name", accessor: "customerId", align: "center" },
         { Header: "stars", accessor: "stars", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
     ];
@@ -27,11 +27,11 @@ function Review() {
     const [tableRows, setTableRows] = useState([])
     const{token}= useContext(AuthContext)
     const deleteReview = async (id) => {
-        if (window.confirm('Are you sure you want to delete this service?')) {
+        if (window.confirm('Are you sure you want to delete this reviwe?')) {
             const deleted = await fetch(`http://localhost:3002/reviews/` + id , {
                 method: 'DELETE',
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-type": "application/json",
                     'Authorization': `Bearer ${token}`,
                 }
             })
@@ -48,15 +48,14 @@ function Review() {
     useEffect(() => {
         const jsxRows = rows?.map((review) => {
             return {
-                id: <>{review.id}</>,
-                content: <>{review.content}</>,
-                customerId: <>{review.customerId}</>,
-                stars: <>{review.stars}</>,
+                content: <>{review?.content}</>,
+                customerId: <>{review?.Customer?.name}</>,
+                stars: <>{review?.stars}/5</>,
                 options: <>
-                    <MDButton variant="text" color="error" onClick={() => { deleteReview(review.id) }}>
+                    <MDButton variant="text" color="error" onClick={() => { deleteReview(review?.id) }}>
                         <Icon>delete</Icon>&nbsp;delete
                     </MDButton>
-                    <Link to={`/reviews/${review.id}`}>
+                    <Link to={`/reviews/${review?.id}`}>
                         {/* <MDButton variant="text" color="dark">
                             <Icon>edit</Icon>&nbsp;edit
                         </MDButton> */}

@@ -32,11 +32,11 @@ function Customer() {
 
   const deleteCustomer = async (id) => {
     if (window.confirm('Are you sure you want to delete this Customer?')) {
-      const deleted = await fetch(`http://localhost:3002/customers/` + id, {
+      const deleted = await fetch(`http://localhost:3002/Customers/` + id, {
         method: 'DELETE',
         headers: {
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       })
       const result = await deleted.json()

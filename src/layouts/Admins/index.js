@@ -52,10 +52,6 @@ function Admin() {
                 id: <>{admin?.id}</>,
                 name: <>{admin?.name}</>,
                 email: <>{admin?.email}</>,
-                email: <>{admin?.password}</>,
-                email: <>{admin?.passwordConfirmation}</>,
-
-
                 options: <>
                     <MDButton variant="text" color="error" onClick={() => { deleteAdmin(admin.id) }}>
                         <Icon>delete</Icon>&nbsp;delete

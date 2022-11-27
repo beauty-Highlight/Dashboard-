@@ -23,7 +23,7 @@ function Service() {
         { Header: "tiltle", accessor: "title", align: "left" },
         { Header: "price", accessor: "price", align: "center" },
         // { Header: "time", accessor: "time", align: "center" },
-        { Header: "description", accessor: "description", align: "center" },
+        //{ Header: "description", accessor: "description", align: "center" },
         { Header: "image", accessor: "image", align: "center" },
         { Header: "options", accessor: "options", align: "center" },
     ];
@@ -57,7 +57,7 @@ function Service() {
                 price: <>{service?.price }</>,
                 // image: <>{service?.image} </>,
                 time: <>{service?.time}</>,
-                // description: <>{service?.description}</>,
+                //description: <>{service?.description}</>,
                 image: (
                     <>
                       <Avatar alt="" variant="square" src={service?.image} sx={{ width: 100, height: 100 }} />
